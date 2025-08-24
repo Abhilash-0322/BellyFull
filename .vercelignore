@@ -1,0 +1,11 @@
+# Vercel ignore file
+node_modules
+.env
+.git
+*.log
+README.md
+DEPLOYMENT.md
+VERCEL_DEPLOYMENT.md
+test.js
+setup-mongodb.sh
+.gitignore

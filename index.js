@@ -32,12 +32,6 @@ app.use(express.static(path.join(__dirname, 'public'), {
     maxAge: process.env.NODE_ENV === 'production' ? '1y' : '0'
 }));
 
-// Debug middleware for static files in production
-if (process.env.NODE_ENV === 'production') {
-    app.use('/css', express.static(path.join(__dirname, 'public/css')));
-    app.use('/images', express.static(path.join(__dirname, 'public/images')));
-}
-
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -55,17 +49,23 @@ app.use((req, res) => {
     res.status(404).send('Page not found');
 });
 
-app.listen(port, () => {
-    console.log(`BellyFull server running on port ${port}`);
-});
+// For local development and production
+if (require.main === module) {
+    app.listen(port, () => {
+        console.log(`BellyFull server running on port ${port}`);
+    });
 
-// Graceful shutdown
-process.on('SIGTERM', () => {
-    console.log('SIGTERM received, shutting down gracefully');
-    process.exit(0);
-});
+    // Graceful shutdown
+    process.on('SIGTERM', () => {
+        console.log('SIGTERM received, shutting down gracefully');
+        process.exit(0);
+    });
 
-process.on('SIGINT', () => {
-    console.log('SIGINT received, shutting down gracefully');
-    process.exit(0);
-});
+    process.on('SIGINT', () => {
+        console.log('SIGINT received, shutting down gracefully');
+        process.exit(0);
+    });
+}
+
+// Export for Vercel
+module.exports = app;
