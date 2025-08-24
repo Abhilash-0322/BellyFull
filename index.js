@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express = require('express');
+const helmet = require('helmet');
 const path = require('path');
 const connectDB = require('./config/database');
 const indexRoutes = require('./routes/index');
@@ -13,6 +14,18 @@ connectDB();
 // Set view engine
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
+
+// Security middleware
+app.use(helmet({
+    contentSecurityPolicy: {
+        directives: {
+            defaultSrc: ["'self'"],
+            styleSrc: ["'self'", "'unsafe-inline'"],
+            scriptSrc: ["'self'"],
+            imgSrc: ["'self'", "data:", "https:"],
+        },
+    },
+}));
 
 // Middleware
 app.use(express.static(path.join(__dirname, 'public'), {
@@ -44,4 +57,15 @@ app.use((req, res) => {
 
 app.listen(port, () => {
     console.log(`BellyFull server running on port ${port}`);
+});
+
+// Graceful shutdown
+process.on('SIGTERM', () => {
+    console.log('SIGTERM received, shutting down gracefully');
+    process.exit(0);
+});
+
+process.on('SIGINT', () => {
+    console.log('SIGINT received, shutting down gracefully');
+    process.exit(0);
 });
