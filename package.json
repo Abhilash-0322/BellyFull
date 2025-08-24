@@ -6,8 +6,10 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
+    "build": "echo 'Build completed'",
     "test": "node test.js",
-    "setup": "./setup-mongodb.sh"
+    "setup": "./setup-mongodb.sh",
+    "vercel-build": "echo 'Vercel build completed'"
   },
   "keywords": ["food-sharing", "hunger", "donation", "community"],
   "author": "Sanchita Gupta",
