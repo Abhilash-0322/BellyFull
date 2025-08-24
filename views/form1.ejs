@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join BellyFull - Make a Difference</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <h1>
+            <div id="name">
+                BellyFull
+            </div>
+        </h1>
+        <nav>
+            <a href="/" class="nav_el">Home</a>
+            <a href="/mission" class="nav_el">Mission</a>
+            <a href="/vision" class="nav_el">Vision</a>
+            <a href="/form1" class="nav_el">Get Started</a>
+        </nav>
+    </header>
+
+    <div class="form-container">
+        <h3>Join Our Community</h3>
+        <form method="post" action="/database">
+            <div class="form-group">
+                <label for="name">Enter your name:</label>
+                <input id="name" type="text" name="name" required maxlength="100">
+            </div>
+            
+            <div class="form-group">
+                <label for="choice">Do you want to receive or donate food?</label>
+                <select name="choice" id="choice" required>
+                    <option value="">Select an option</option>
+                    <option value="don">Donate food</option>
+                    <option value="rec">Receive food</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="phone_no">Enter your phone number:</label>
+                <input type="tel" name="phone_no" id="phone_no" required pattern="[0-9]{10}" placeholder="1234567890">
+                <small>Please enter a 10-digit phone number</small>
+            </div>
+            
+            <div class="form-group">
+                <label for="city">Enter your city:</label>
+                <input type="text" name="city" id="city" required maxlength="50">
+            </div>
+            
+            <div class="form-group" style="text-align: center;">
+                <button type="submit">Connect Me</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+        <button class="el" style="width:10rem;height:2.5rem;font-size:1rem;">Submit</button>
+    </form>
+</body>
+</html>

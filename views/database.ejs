@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connecting You with Others - BellyFull</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <h1>
+            <div id="name">
+                BellyFull
+            </div>
+        </h1>
+        <nav>
+            <a href="/" class="nav_el">Home</a>
+            <a href="/mission" class="nav_el">Mission</a>
+            <a href="/vision" class="nav_el">Vision</a>
+            <a href="/form1" class="nav_el">Get Started</a>
+        </nav>
+    </header>
+
+    <div class="table-container">
+        <%if(choice=="don"){%>
+            <h3>People near you who are in need of food in <%= city %></h3>
+        <%} else {%>
+            <h3>People near you who are interested in donating food in <%= city %></h3>
+        <%}%>
+        
+        <%if(result.length > 0){%>
+            <table>
+                <thead>
+                    <tr>
+                        <th>NAME</th>
+                        <th>CITY</th>
+                        <th>PHONE NUMBER</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%for(let r of result){%>
+                        <tr>
+                            <td><%= r.name %></td>
+                            <td><%= r.city %></td>
+                            <td><%= r.phone_no %></td>
+                        </tr>
+                    <%}%>
+                </tbody>
+            </table>
+            <p style="text-align: center; margin-top: 2rem; color: #2d5016;">
+                Great! We found <%= result.length %> match<%= result.length > 1 ? 'es' : '' %> for you. 
+                Please reach out to them directly using the contact information provided.
+            </p>
+        <%} else {%>
+            <div style="text-align: center; padding: 2rem;">
+                <p style="font-size: 1.2rem; color: #555;">
+                    No matches found in <%= city %> yet. Don't worry! 
+                </p>
+                <p style="margin-top: 1rem;">
+                    Your information has been saved, and we'll connect you with others when they join from your area.
+                </p>
+                <a href="/form1" style="margin-top: 2rem; display: inline-block;">
+                    <button>Share with Friends</button>
+                </a>
+            </div>
+        <%}%>
+        
+        <div style="text-align: center; margin-top: 2rem;">
+            <a href="/"><button>Back to Home</button></a>
+            <a href="/form1" style="margin-left: 1rem;"><button>Help Someone Else</button></a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+{
+  "name": "bellyfull",
+  "version": "1.0.0",
+  "description": "A platform to connect food donors with those in need",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "node test.js",
+    "setup": "./setup-mongodb.sh"
+  },
+  "keywords": ["food-sharing", "hunger", "donation", "community"],
+  "author": "Sanchita Gupta",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.18.2",
+    "mongoose": "^7.5.0",
+    "method-override": "^3.0.0",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
