@@ -15,7 +15,16 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
 // Middleware
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public'), {
+    maxAge: process.env.NODE_ENV === 'production' ? '1y' : '0'
+}));
+
+// Debug middleware for static files in production
+if (process.env.NODE_ENV === 'production') {
+    app.use('/css', express.static(path.join(__dirname, 'public/css')));
+    app.use('/images', express.static(path.join(__dirname, 'public/images')));
+}
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 

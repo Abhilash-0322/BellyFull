@@ -8,11 +8,17 @@
   ],
   "routes": [
     {
+      "src": "/public/(.*)",
+      "dest": "/public/$1"
+    },
+    {
       "src": "/(.*)",
       "dest": "/index.js"
     }
   ],
-  "env": {
-    "NODE_ENV": "production"
+  "functions": {
+    "index.js": {
+      "includeFiles": "public/**"
+    }
   }
 }
